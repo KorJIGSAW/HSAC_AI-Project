@@ -1,12 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { useState } from 'react';
 
 export default function ApplycationButton() {
-  return <S.button>신청</S.button>;
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const handleClick = () => {
+    setIsCompleted(prev => !prev);
+  };
+
+  return (
+    <S.Button onClick={handleClick} completed={isCompleted}>
+      {isCompleted ? '완료' : '신청'}
+    </S.Button>
+  );
 }
 
 const S = {
-  button: styled.button`
-  height: 2.8rem;
+  Button: styled.button`
+    height: 2.8rem;
     padding: 0 0.35rem;
     background: ${({ theme }) => theme.green500};
     color: ${({ theme }) => theme.white};
@@ -14,5 +25,12 @@ const S = {
     font-weight: 500;
     border-radius: 0.3rem;
     cursor: pointer;
+
+    ${({ completed }) =>
+      completed &&
+      css`
+        background: ${({ theme }) => theme.gray300};
+        color: ${({ theme }) => theme.gray200};
+      `}
   `,
 };
