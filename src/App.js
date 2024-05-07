@@ -1,8 +1,12 @@
+import { Routes, Route } from 'react-router-dom';
+import Card from 'components/commons/card/card';
+import routes from 'utils/constants/routes';
+
 function App() {
   return (
-    <div>
-      <h1>프로젝트 초기 세팅</h1>
-    </div>
+    <Routes>
+      <Route path={routes.minseo} element={<Card />}></Route>
+    </Routes>
   );
 }
 
