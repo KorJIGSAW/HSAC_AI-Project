@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { useState } from 'react';
 
 export default function ApplycationButton() {
@@ -9,7 +9,7 @@ export default function ApplycationButton() {
   };
 
   return (
-    <S.Button onClick={handleClick} completed={isCompleted}>
+    <S.Button onClick={handleClick} $completed={isCompleted}>
       {isCompleted ? '완료' : '신청'}
     </S.Button>
   );
@@ -19,18 +19,12 @@ const S = {
   Button: styled.button`
     height: 2.8rem;
     padding: 0 0.35rem;
-    background: ${({ theme }) => theme.green500};
+    background: ${({ theme, $completed }) =>
+      $completed ? theme.gray400 : theme.green500};
     color: ${({ theme }) => theme.white};
     font-size: 14px;
     font-weight: 500;
     border-radius: 0.3rem;
     cursor: pointer;
-
-    ${({ completed }) =>
-      completed &&
-      css`
-        background: ${({ theme }) => theme.gray300};
-        color: ${({ theme }) => theme.gray200};
-      `}
   `,
 };

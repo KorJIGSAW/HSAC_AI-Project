@@ -44,9 +44,6 @@ const S = {
   //container
   Container: styled.div`
     //나중에 없애기 마진
-    margin-top: 20px;
-    margin-left: 20px;
-
     padding: 0.8rem 0.5rem 0.5rem 0.8rem;
     width: 65rem;
     background: ${({ theme }) => theme.white};
