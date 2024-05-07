@@ -1,36 +1,37 @@
 import styled from 'styled-components';
-import ApplycationButton from '../button/applicationButton';
+import ApplycationButton from 'components/commons/buttons/applicationButton';
 
-export default function Card() {
+export default function Card({ data }) {
+  if (!data) {
+    return <div>No data available</div>;
+  }
+
   return (
     <S.Container>
       <S.Wrapper>
         <S.Header>
-          <S.Title>[T204998] POP 디자인실험</S.Title>
+          <S.Title>{data.title}</S.Title>
           <S.FlexContainer>
             <S.FlexRow>
               {/* 헤더 제목 행 */}
-              <S.FlexItem>타과1</S.FlexItem>
-              <S.FlexItem>타과2</S.FlexItem>
-              <S.FlexItem>타과3</S.FlexItem>
-              <S.FlexItem>타과4</S.FlexItem>
-              <S.FlexItem>편입</S.FlexItem>
-              <S.FlexItem>차과</S.FlexItem>
+              {data.cells.map((item, index) => (
+                <S.FlexItem key={index}>{item.name}</S.FlexItem>
+              ))}
             </S.FlexRow>
             <S.FlexRow>
               {/* 데이터 행 */}
-              <S.FlexCell>0</S.FlexCell>
-              <S.FlexCell>0</S.FlexCell>
-              <S.FlexCell>0</S.FlexCell>
-              <S.FlexCell>0</S.FlexCell>
-              <S.FlexCell>0</S.FlexCell>
-              <S.FlexCell>25</S.FlexCell>
+              {data.cells.map((item, index) => (
+                <S.FlexCell key={index}>{item.value}</S.FlexCell>
+              ))}
             </S.FlexRow>
           </S.FlexContainer>
         </S.Header>
         <S.Section>
-          <S.Info> A | 전선 | 3학점 | 주간 | 박원철 </S.Info>
-          <S.Time> 창의관501 수1~3M </S.Time>
+          <S.Info>
+            {data.info.type} | {data.info.lectureType} | {data.info.credits} |{' '}
+            {data.info.timePeriod} | {data.info.professor}
+          </S.Info>
+          <S.Time>{data.time}</S.Time>
         </S.Section>
         <S.Button>
           <ApplycationButton />
