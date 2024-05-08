@@ -4,7 +4,7 @@ import ApplycationButton from 'components/commons/buttons/applicationButton';
 export default function Card({ data }) {
 
   const handleApplyClick = () => {
-    const confirmMessage = `${data.title}(${data.code})를 수강 신청하시겠습니까?`;
+    const confirmMessage = `${data.title}(${data.code})을 수강신청 하시겠습니까?`;
     if (window.confirm(confirmMessage)) {
     }
   };
