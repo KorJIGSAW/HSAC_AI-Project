@@ -13,6 +13,7 @@ export const theme = {
     beige300: '#FFC583',
     beige400: '#FFAE65',
     beige500: '#FF8832',
+    blue: '#0369c8',
     blue100: '#E2F5FF',
     blue200: '#B1E4FF',
     blue300: '#7CD2FF',
