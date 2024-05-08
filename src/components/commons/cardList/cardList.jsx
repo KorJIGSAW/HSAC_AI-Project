@@ -28,12 +28,12 @@ const S = {
     margin-left: 1rem;
     margin-top: 1rem;
 
-    width: 67.3rem;
+    width: 73rem;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-bottom: 0.3rem solid ${({ theme }) => theme.blue500};
+    border-bottom: 0.3rem solid ${({ theme }) => theme.blue};
     background-color: ${({ theme }) => theme.blue};
   `,
 
@@ -47,7 +47,7 @@ const S = {
     flex-direction: flex-start;
     align-items: center;
     margin-left: 1rem;
-    gap: 21.2rem;
+    gap: 23.8rem;
     padding: 0.75rem 0;
   `,
 

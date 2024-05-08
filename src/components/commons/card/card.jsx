@@ -53,7 +53,7 @@ const S = {
   Container: styled.div`
     //나중에 없애기 마진
     padding: 0.8rem 0.5rem 0.5rem 0.8rem;
-    width: 65rem;
+    width: 70.5rem;
     background: ${({ theme }) => theme.white};
     border: 0.15rem solid ${({ theme }) => theme.gray300};
   `,
