@@ -2,6 +2,13 @@ import styled from 'styled-components';
 import ApplycationButton from 'components/commons/buttons/applicationButton';
 
 export default function Card({ data }) {
+
+  const handleApplyClick = () => {
+    const confirmMessage = `${data.title}(${data.code})를 수강 신청하시겠습니까?`;
+    if (window.confirm(confirmMessage)) {
+    }
+  };
+
   if (!data) {
     return <div>No data available</div>;
   }
@@ -10,7 +17,7 @@ export default function Card({ data }) {
     <S.Container>
       <S.Wrapper>
         <S.Header>
-          <S.Title>{data.title}</S.Title>
+          <S.Title>[{data.code}] {data.title}</S.Title>
           <S.FlexContainer>
             <S.FlexRow>
               {/* 헤더 제목 행 */}
@@ -34,7 +41,7 @@ export default function Card({ data }) {
           <S.Time>{data.time}</S.Time>
         </S.Section>
         <S.Button>
-          <ApplycationButton />
+          <ApplycationButton  onClick={handleApplyClick}/>
         </S.Button>
       </S.Wrapper>
     </S.Container>

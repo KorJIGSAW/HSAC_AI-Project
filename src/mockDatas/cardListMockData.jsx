@@ -1,6 +1,7 @@
 export const mockData = [
   {
-    title: '[T204998] 자료구조',
+    code: 'T204998',
+    title: '자료구조',
     cells: [
       { name: '타과1', value: 0 },
       { name: '타과2', value: 0 },
@@ -19,7 +20,8 @@ export const mockData = [
     time: '창의관501 수1~3M',
   },
   {
-    title: '[T204999] 알고리즘',
+    code: 'T204999',
+    title: '알고리즘',
     cells: [
       { name: '타과1', value: 10 },
       { name: '타과2', value: 5 },
@@ -38,7 +40,8 @@ export const mockData = [
     time: '공학관102 목3~5M',
   },
   {
-    title: '[T204990] 객체 지향 언어',
+    code: 'T204990',
+    title: '객체 지향 언어',
     cells: [
       { name: '타과1', value: 10 },
       { name: '타과2', value: 5 },
@@ -57,7 +60,8 @@ export const mockData = [
     time: '공학관102 목3~5M',
   },
   {
-    title: '[T205599] 데이터 베이스',
+    code: 'T204991',
+    title: '데이터 베이스',
     cells: [
       { name: '타과1', value: 10 },
       { name: '타과2', value: 5 },
@@ -76,7 +80,8 @@ export const mockData = [
     time: '공학관102 목3~5M',
   },
   {
-    title: '[T204499] 데이터 통신',
+    code  : 'T204992',
+    title: '데이터 통신',
     cells: [
       { name: '타과1', value: 10 },
       { name: '타과2', value: 5 },
@@ -95,7 +100,8 @@ export const mockData = [
     time: '공학관102 목3~5M',
   },
   {
-    title: '[T201111] 응용 수학',
+    code: 'T204993',
+    title: '응용 수학',
     cells: [
       { name: '타과1', value: 10 },
       { name: '타과2', value: 5 },
@@ -114,7 +120,8 @@ export const mockData = [
     time: '공학관102 목3~5M',
   },
   {
-    title: '[T208829] 웹 프레임 워크',
+    code: 'T204994',
+    title: '웹 프레임 워크',
     cells: [
       { name: '타과1', value: 10 },
       { name: '타과2', value: 5 },
