@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # HSAC_AI-Project
 # 오짱산입니다
 # 머지테스트
+=======
+# 머지 테스트
+>>>>>>> 5a62deeb35cadc22c9e2f7cd74a374e3b3309686
 =======
 # Getting Started with Create React App
 
@@ -73,4 +77,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<<<<<<< HEAD
 >>>>>>> cd93c3433d73eced1ee98f6ae4142801e1174993
+=======
+>>>>>>> 0b38f5c70fc1db493f637b0cf0d6cf294cad3e0b
+>>>>>>> 5a62deeb35cadc22c9e2f7cd74a374e3b3309686
