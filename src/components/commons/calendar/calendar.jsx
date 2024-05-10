@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 // 스타일 컴포넌트 정의
 const Table = styled.table`
-  width: 50%; // 전체 테이블 너비를 줄입니다.
+  width: 60%; // 전체 테이블 너비를 줄입니다.
   border-collapse: collapse;
   font-size: 12px; // 전체 테이블의 폰트 사이즈를 줄입니다.
 `;
@@ -11,8 +11,8 @@ const Table = styled.table`
 const TableCell = styled.td`
   border: 1px solid #f0f0f0;
   text-align: center;
-  padding: 5px; // 셀의 패딩을 줄입니다.
-  height: 20px; // 셀의 최소 높이를 설정합니다.
+  padding: 2px; // 셀의 패딩을 줄입니다.
+  height: 15px; // 셀의 최소 높이를 설정합니다.
   display: table-cell;
   vertical-align: middle; // 셀 내용을 수직 중앙에 배치합니다.
   &:not(:first-child):empty {
@@ -25,7 +25,7 @@ const TableHeader = styled.th`
   text-align: center;
   padding: 5px; // 헤더의 패딩을 줄입니다.
   background-color: #f9f9f9;
-  width: calc(80% / 6); // 헤더의 너비를 조정합니다.
+  width: calc(50% / 6); // 헤더의 너비를 조정합니다.
 `;
 
 const scheduleData = {
