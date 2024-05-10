@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'styles/theme';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('wrapper'));
 root.render(
     <ThemeProvider theme={theme}>
       <BrowserRouter>

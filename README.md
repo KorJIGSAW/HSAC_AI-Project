@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+# test
+=======
+<<<<<<< HEAD
 # 머지 테스트
 =======
 # Getting Started with Create React App
@@ -72,3 +75,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 >>>>>>> 0b38f5c70fc1db493f637b0cf0d6cf294cad3e0b
+>>>>>>> 22bd62614c6ed939eb954c3bd0c0c9ba76f99cc9
