@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 function CourseForm({ addCourse }) {
+  //useState()로 싱테 빋기
   const [courseCode, setCourseCode] = useState('');
   const [division, setDivision] = useState('');
   const [creditValue, setCreditValue] = useState('');
   const [credit, setCredit] = useState(false);
 
+  //폼 제출 핸들러
   const handleSubmit = event => {
     event.preventDefault();
     addCourse({
@@ -14,6 +16,7 @@ function CourseForm({ addCourse }) {
       creditValue,
       credit: parseFloat(creditValue) >= 4.0,
     });
+    //초기화
     setCourseCode('');
     setDivision('');
     setCreditValue('');
@@ -54,8 +57,9 @@ function CourseForm({ addCourse }) {
 }
 
 function CourseList() {
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState([]); //과목 목록
 
+  //과목 목록 불러오기
   useEffect(() => {
     const savedCourses = localStorage.getItem('courses');
     if (savedCourses) {
@@ -63,10 +67,12 @@ function CourseList() {
     }
   }, []);
 
+  //목록 변경될 때마다 로컬 스토리지 업데이트
   useEffect(() => {
     localStorage.setItem('courses', JSON.stringify(courses));
   }, [courses]);
 
+  //내림차순으로 로컬 스토리지 업데이트
   const addCourse = course => {
     setCourses(prevCourses => {
       const updatedCourses = [...prevCourses, course].sort((a, b) =>
@@ -76,9 +82,10 @@ function CourseList() {
     });
   };
 
+  //로컬 스토리지 상태 업데이트
   const clearLocalStorage = () => {
     localStorage.removeItem('courses');
-    setCourses([]); // 컴포넌트 상태도 업데이트하여 화면 갱신
+    setCourses([]);
   };
 
   return (
