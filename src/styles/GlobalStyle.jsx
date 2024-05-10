@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.285;
     display: flex;
     flex-direction: column;
+    background-color: #fafafa;
   }
   a {
     text-decoration: none;
