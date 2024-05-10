@@ -5,6 +5,7 @@ import CardList from 'components/commons/cardList/cardList';
 function App() {
   return (
     <Routes>
+      <Route path={routes.hong}></Route>
       <Route path={routes.minseo} element={<CardList />}></Route>
     </Routes>
   );
