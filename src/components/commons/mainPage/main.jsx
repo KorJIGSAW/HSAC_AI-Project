@@ -23,7 +23,7 @@ const MainPage = styled.main`
     background-color: aliceblue;
 
     section{
-        min-height: 100vh;
+        min-height: 200vh;
         display: flex;
         justify-content: center;
         align-items: center;
