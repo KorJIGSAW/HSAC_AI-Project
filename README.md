@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-# HSAC_AI-Project
-# 임의로 수정함.
-# 추가수정
-=======
-<<<<<<< HEAD
-# 머지 테스트
-=======
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
