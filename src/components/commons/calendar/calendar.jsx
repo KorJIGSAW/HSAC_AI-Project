@@ -30,13 +30,25 @@ const TableHeader = styled.th`
   width: calc(50% / 6); // 헤더의 너비를 조정합니다.
 `;
 
-const scheduleData = {
-  "월": {"오전 9-11": "데이터베이스"},
-  "화": {"오전 9": "알고리즘", "오전 11": "데이터베이스"},
-  "수": {"오전 9": "객체지향언어", "오전 11": "데이터통신"},
-  "목": {"오전 9": "데이터베이스", "오전 11": "응용수학"},
-  "금": {"오전 9": "응용수학", "오전 11": "웹프레임워크"},
-};
+// const scheduleData = {
+//   "월": {"오전 9": "데이터베이스", "오전 10": "데이터베이스", "오전 11": "데이터베이스"},
+//   "화": {"오전 9": "알고리즘", "오전 11": "데이터베이스"},
+//   "수": {"오전 9": "객체지향언어", "오전 11": "데이터통신"},
+//   "목": {"오전 9": "데이터베이스", "오전 11": "응용수학"},
+//   "금": {"오전 9": "응용수학", "오전 11": "웹프레임워크"},
+// };
+
+const scheduleData = [
+  { day: "월", startTime: 9, studyTime: 2, subject: "데이터베이스" },
+  { day: "화", startTime: 9, studyTime: 1, subject: "알고리즘" },
+  { day: "화", startTime: 11, studyTime: 1, subject: "데이터베이스" },
+  { day: "수", startTime: 9, studyTime: 2, subject: "객체지향언어" },
+  { day: "수", startTime: 11, studyTime: 1, subject: "데이터통신" },
+  { day: "목", startTime: 9, studyTime: 2, subject: "데이터베이스" },
+  { day: "목", startTime: 11, studyTime: 1, subject: "응용수학" },
+  { day: "금", startTime: 9, studyTime: 2, subject: "응용수학" },
+  { day: "금", startTime: 11, studyTime: 1, subject: "웹프레임워크" },
+];
 
 
 const subjectColors = {
@@ -53,29 +65,42 @@ const subjectColors = {
 const hours = ["08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"];
 
 export default function CalendarTable() {
+  // 요일 배열
+  const days = ["월", "화", "수", "목", "금"];
+
+  const calculateRowSpan = (studyTime) => {
+    return studyTime * 2;
+  }
+
+  const rowSpanMap = {};
+
   return (
     <Table>
       <thead>
         <tr>
           <TableHeader>시간/요일</TableHeader>
-          {Object.keys(scheduleData).map(day => (
+          {days.map(day => (
             <TableHeader key={day}>{day}</TableHeader>
           ))}
         </tr>
       </thead>
       <tbody>
-        {hours.map((hour, index) => {
+        {hours.map((hour, hourIndex) => {
           const isHalfHour = hour.endsWith(":30");
           return (
-            <tr key={index}>
-              {/* 30분 단위의 시간은 표시하지 않습니다. */}
+            <tr key={hourIndex}>
               <TableCell>{isHalfHour ? '' : hour}</TableCell>
-              {Object.keys(scheduleData).map(day => {
-                const hourKey = hour === "09:00" ? "오전 9" : hour === "11:00" ? "오전 11" : hour;
-                const classInfo = scheduleData[day][hourKey];
-                const bgColor = classInfo ? subjectColors[classInfo] : 'transparent';
-                // 30분 단위의 셀은 내용을 표시하지 않습니다.
-                return <TableCell key={day} bgColor={bgColor}>{isHalfHour ? '' : classInfo || ''}</TableCell>;
+              {days.map(day => {
+                const cellContent = scheduleData
+                  .filter(({ day: d, startTime, studyTime }) => {
+                    const hourNumber = parseInt(hour.split(":")[0], 10);
+                    const endHour = startTime + studyTime;
+                    return d === day && hourNumber >= startTime && hourNumber < endHour;
+                  })
+                  .map(({ subject }) => subject)
+                  .join(", ");
+                const bgColor = cellContent ? subjectColors[cellContent] : 'transparent';
+                return <TableCell key={day} bgColor={bgColor}>{isHalfHour ? '' : cellContent}</TableCell>;
               })}
             </tr>
           );
