@@ -1,111 +1,83 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useRef, useEffect } from 'react';
 import { theme } from '../../../styles/theme';
 
-// 스타일 컴포넌트 정의
-const Table = styled.table`
-  width: 60%; // 전체 테이블 너비를 줄입니다.
-  border-collapse: collapse;
-  font-size: 12px; // 전체 테이블의 폰트 사이즈를 줄입니다.
-`;
+function CalendarTable() {
+  const canvasRef = useRef(null);
 
-const TableCell = styled.td`
-  border: 1px solid #f0f0f0;
-  text-align: center;
-  padding: 2px; // 셀의 패딩을 줄입니다.
-  height: 15px; // 셀의 최소 높이를 설정합니다.
-  display: table-cell;
-  vertical-align: middle; // 셀 내용을 수직 중앙에 배치합니다.
-  background-color: ${props => props.bgColor || 'transparent'}; // 셀의 배경색을 설정합니다.
-  &:not(:first-child):empty {
-    border-top: 1px dashed #f0f0f0; /* 빈 셀의 상단에 점선을 추가합니다. */
-  }
-`;
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
 
-const TableHeader = styled.th`
-  border: 1px solid #f0f0f0;
-  text-align: center;
-  padding: 5px; // 헤더의 패딩을 줄입니다.
-  background-color: #f9f9f9;
-  width: calc(50% / 6); // 헤더의 너비를 조정합니다.
-`;
+    // 캔버스 크기 설정
+    canvas.width = 850;
+    canvas.height = 710;
 
-// const scheduleData = {
-//   "월": {"오전 9": "데이터베이스", "오전 10": "데이터베이스", "오전 11": "데이터베이스"},
-//   "화": {"오전 9": "알고리즘", "오전 11": "데이터베이스"},
-//   "수": {"오전 9": "객체지향언어", "오전 11": "데이터통신"},
-//   "목": {"오전 9": "데이터베이스", "오전 11": "응용수학"},
-//   "금": {"오전 9": "응용수학", "오전 11": "웹프레임워크"},
-// };
+    // 기본 설정
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
 
-const scheduleData = [
-  { day: "월", startTime: 9, studyTime: 2, subject: "데이터베이스" },
-  { day: "화", startTime: 9, studyTime: 1, subject: "알고리즘" },
-  { day: "화", startTime: 11, studyTime: 1, subject: "데이터베이스" },
-  { day: "수", startTime: 9, studyTime: 2, subject: "객체지향언어" },
-  { day: "수", startTime: 11, studyTime: 1, subject: "데이터통신" },
-  { day: "목", startTime: 9, studyTime: 2, subject: "데이터베이스" },
-  { day: "목", startTime: 11, studyTime: 1, subject: "응용수학" },
-  { day: "금", startTime: 9, studyTime: 2, subject: "응용수학" },
-  { day: "금", startTime: 11, studyTime: 1, subject: "웹프레임워크" },
-];
+    // 과목 색상 설정
+    const subjectColors = {
+      '데이터베이스': theme.blue300,
+      '운영체제': theme.green300,
+      '네트워크': theme.purple300,
+    };
 
+    // 시간표 그리기
+    // 수직선 (요일 구분)
+    for (let i = 1; i <= 6; i++) {
+      ctx.moveTo(i * 150 - 80, 0);
+      ctx.lineTo(i * 150 - 80, 700);
+      ctx.stroke();
+    }
 
-const subjectColors = {
-  "자료구조": theme.purple300,
-  "알고리즘": theme.blue300,
-  "객체지향언어": theme.green300,
-  "데이터베이스": theme.beige300,
-  "데이터통신": theme.purple300,
-  "응용수학": theme.blue300,
-  "웹프레임워크": theme.green300,
-};
+    // 수평선 (시간 구분)
+    for (let i = 1; i <= 14; i++) {
+      ctx.moveTo(0, i * 50);
+      ctx.lineTo(820, i * 50);
+      ctx.stroke();
+    }
 
-// 시간 배열에 30분 단위 추가
-const hours = ["08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"];
+    // 텍스트 추가
+    ctx.font = '16px Arial';
+    ctx.fillText('월', 75, 20);
+    ctx.fillText('화', 225, 20);
+    ctx.fillText('수', 375, 20);
+    ctx.fillText('목', 525, 20);
+    ctx.fillText('금', 675, 20);
 
-export default function CalendarTable() {
-  // 요일 배열
-  const days = ["월", "화", "수", "목", "금"];
+    // 시간 추가
+    for (let i = 9; i <= 21; i++) {
+      ctx.fillText(`${i}시`, 10, (i - 8) * 50 + 20);
+    }
 
-  const calculateRowSpan = (studyTime) => {
-    return studyTime * 2;
-  }
+    // 과목 그리기
+    function drawSubject(day, startTime, studyTime, subject) {
+      const days = ['월', '화', '수', '목', '금'];
+      const dayIndex = days.indexOf(day);
+      const x = 71 + dayIndex * 150;
+      const y = (startTime - 9) * 50 + 51;
+      const height = studyTime * 50 - 2;
 
-  const rowSpanMap = {};
+      // 과목 배경 색칠
+      ctx.fillStyle = subjectColors[subject] || 'lightblue'; // 과목 배경색
+      ctx.fillRect(x, y, 148, height);
 
-  return (
-    <Table>
-      <thead>
-        <tr>
-          <TableHeader>시간/요일</TableHeader>
-          {days.map(day => (
-            <TableHeader key={day}>{day}</TableHeader>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {hours.map((hour, hourIndex) => {
-          const isHalfHour = hour.endsWith(":30");
-          return (
-            <tr key={hourIndex}>
-              <TableCell>{isHalfHour ? '' : hour}</TableCell>
-              {days.map(day => {
-                const cellContent = scheduleData
-                  .filter(({ day: d, startTime, studyTime }) => {
-                    const hourNumber = parseInt(hour.split(":")[0], 10);
-                    const endHour = startTime + studyTime;
-                    return d === day && hourNumber >= startTime && hourNumber < endHour;
-                  })
-                  .map(({ subject }) => subject)
-                  .join(", ");
-                const bgColor = cellContent ? subjectColors[cellContent] : 'transparent';
-                return <TableCell key={day} bgColor={bgColor}>{isHalfHour ? '' : cellContent}</TableCell>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </Table>
-  );
+      // 과목명 텍스트
+      ctx.fillStyle = 'black'; // 텍스트 색상
+      ctx.fillText(subject, x + 5, y + 25); // 과목명 위치 조정
+    }
+
+    // 과목 정보를 기반으로 과목 그리기
+    drawSubject("월", 9, 1.5, "데이터베이스");
+    drawSubject("화", 10, 1, "운영체제");
+    drawSubject("수", 14, 1.5, "네트워크");
+    drawSubject("목", 12, 1, "데이터베이스");
+    drawSubject("금", 13, 1.5, "운영체제");
+
+  }, []);
+
+  return <canvas ref={canvasRef} />;
 }
+
+export default CalendarTable;
