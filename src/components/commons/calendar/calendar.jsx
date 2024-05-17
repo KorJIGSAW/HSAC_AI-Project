@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { theme } from '../../../styles/theme';
 
 // 스타일 컴포넌트 정의
 const Table = styled.table`
@@ -15,6 +16,7 @@ const TableCell = styled.td`
   height: 15px; // 셀의 최소 높이를 설정합니다.
   display: table-cell;
   vertical-align: middle; // 셀 내용을 수직 중앙에 배치합니다.
+  background-color: ${props => props.bgColor || 'transparent'}; // 셀의 배경색을 설정합니다.
   &:not(:first-child):empty {
     border-top: 1px dashed #f0f0f0; /* 빈 셀의 상단에 점선을 추가합니다. */
   }
@@ -29,11 +31,22 @@ const TableHeader = styled.th`
 `;
 
 const scheduleData = {
-  "월": {"오전 9": "미적분학", "오전 11": "컴퓨터 과학"},
-  "화": {"오전 9": "물리학", "오전 11": "영문학"},
-  "수": {"오전 9": "화학", "오전 11": "생물학"},
-  "목": {"오전 9": "역사", "오전 11": "경제학"},
-  "금": {"오전 9": "정치학", "오전 11": "문학"},
+  "월": {"오전 9-11": "데이터베이스"},
+  "화": {"오전 9": "알고리즘", "오전 11": "데이터베이스"},
+  "수": {"오전 9": "객체지향언어", "오전 11": "데이터통신"},
+  "목": {"오전 9": "데이터베이스", "오전 11": "응용수학"},
+  "금": {"오전 9": "응용수학", "오전 11": "웹프레임워크"},
+};
+
+
+const subjectColors = {
+  "자료구조": theme.purple300,
+  "알고리즘": theme.blue300,
+  "객체지향언어": theme.green300,
+  "데이터베이스": theme.beige300,
+  "데이터통신": theme.purple300,
+  "응용수학": theme.blue300,
+  "웹프레임워크": theme.green300,
 };
 
 // 시간 배열에 30분 단위 추가
@@ -60,8 +73,9 @@ export default function CalendarTable() {
               {Object.keys(scheduleData).map(day => {
                 const hourKey = hour === "09:00" ? "오전 9" : hour === "11:00" ? "오전 11" : hour;
                 const classInfo = scheduleData[day][hourKey];
+                const bgColor = classInfo ? subjectColors[classInfo] : 'transparent';
                 // 30분 단위의 셀은 내용을 표시하지 않습니다.
-                return <TableCell key={day}>{isHalfHour ? '' : classInfo || ''}</TableCell>;
+                return <TableCell key={day} bgColor={bgColor}>{isHalfHour ? '' : classInfo || ''}</TableCell>;
               })}
             </tr>
           );
