@@ -66,3 +66,4 @@ export const theme = {
     mobile: `(min-width: 375px) and (max-width: 767px)`,
   },
 };
+
