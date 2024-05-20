@@ -33,6 +33,7 @@ export const theme = {
     gray700: '#3A3A3A',
     gray800: '#2B2B2B',
     gray900: '#181818',
+    red: '#FF3B30',
     white: '#FFFFFF',
     black: '#000000',
     error: '#DC3A3A',
