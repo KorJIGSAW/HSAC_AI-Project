@@ -1,26 +1,27 @@
-import Card from 'components/commons/card/card';
+import Calendar from 'components/commons/calendar/calendar';
 import styled from 'styled-components';
-import { mockData } from 'mockDatas/cardListMockData';
 
-export default function CardList() {
+export default function CalendarList() {
   return (
     <S.Container>
       <S.Wrapper>
         <S.Header>
-          <S.Title>[과목코드] 교과목명</S.Title>
-          <S.Description>
-            분반 | 이수 | 학점 | 주야 | 학년 | 담당교수 | 비고
-          </S.Description>
+          <S.Title>당신의 시간표</S.Title>
         </S.Header>
         <S.Section>
-          {mockData.map((data, index) => (
-            <Card key={index} data={data} />
-          ))}
+            <CalendarWrapper>
+                <Calendar />
+            </CalendarWrapper>
         </S.Section>
       </S.Wrapper>
     </S.Container>
   );
 }
+
+const CalendarWrapper = styled.div`
+    width: 700px;
+    height: 700px;
+`;
 
 const S = {
   Container: styled.div`
@@ -67,7 +68,7 @@ const S = {
 
   Section: styled.div`
     height: 50rem;
-    overflow-y: auto;
+    overflow-y: hidden;
 
     > div {
       &:not(:first-child) {
