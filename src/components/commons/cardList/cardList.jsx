@@ -42,6 +42,9 @@ const S = {
     flex-direction: column;
   `,
 
+  //bar
+
+  //header
   Header: styled.div`
     display: flex;
     flex-direction: flex-start;
@@ -62,7 +65,7 @@ const S = {
   `,
 
   Section: styled.div`
-    height: 50rem; 
+    height: 50rem;
     overflow-y: auto;
 
     > div {

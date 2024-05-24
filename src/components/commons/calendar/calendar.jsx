@@ -18,9 +18,15 @@ function CalendarTable() {
 
     // 과목 색상 설정
     const subjectColors = {
-      '데이터베이스': theme.blue300,
+      '데이터 베이스': theme.blue300,
       '운영체제': theme.green300,
       '네트워크': theme.purple300,
+      '자료구조': theme.beige300,
+      '알고리즘': theme.orange300,
+      '객체 지향 언어':theme.pink300,
+      '데이터 통신':theme.yellow300,
+      '응용 수학':theme.red300,
+      '웹 프레임 워크':theme.beige400,
     };
 
     // 시간표 그리기
@@ -56,12 +62,24 @@ function CalendarTable() {
       const days = ['월', '화', '수', '목', '금'];
       const dayIndex = days.indexOf(day);
       const x = 71 + dayIndex * 150;
-      const y = (startTime - 9) * 50 + 51;
-      const height = studyTime * 50 - 2;
+      const y = (startTime - 9) * 50 + 50;
+      const height = studyTime * 50;
 
       // 과목 배경 색칠
       ctx.fillStyle = subjectColors[subject] || 'lightblue'; // 과목 배경색
       ctx.fillRect(x, y, 148, height);
+
+       // 상단 검은 선
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + 148, y);
+      ctx.stroke();
+
+      // 하단 검은 선
+      ctx.beginPath();
+      ctx.moveTo(x, y + height);
+      ctx.lineTo(x + 148, y + height);
+      ctx.stroke();
 
       // 과목명 텍스트
       ctx.fillStyle = 'black'; // 텍스트 색상
@@ -69,13 +87,35 @@ function CalendarTable() {
     }
 
     // 과목 정보를 기반으로 과목 그리기
+<<<<<<< HEAD
     drawSubject("월", 9, 1.5, "데이터베이스");
     drawSubject("화", 10, 1, "운영체제");
     drawSubject("수", 14, 1.5, "네트워크");
     drawSubject("목", 12, 1, "데이터베이스");
     drawSubject("금", 13, 1.5, "운영체제");
     drawSubject("수", 9, 3, "황기태");
+=======
+    // 월요일
+    drawSubject("월", 9, 1.5, "데이터 베이스");
+    drawSubject("월", 11, 1, "자료구조");
+>>>>>>> b14f41d9d67af2f86570d5fe8fe5d1111632431b
 
+    // 화요일
+    drawSubject("화", 10, 1, "운영체제");
+    drawSubject("화", 11.5, 1.5, "객체 지향 언어");
+
+    // 수요일
+    drawSubject("수", 14, 1.5, "네트워크");
+    drawSubject("수", 16, 1, "데이터 통신");
+
+    // 목요일
+    drawSubject("목", 12, 1, "데이터 베이스");
+    drawSubject("목", 13.5, 1.5, "응용 수학");
+
+    // 금요일
+    drawSubject("금", 13, 1.5, "운영체제");
+    drawSubject("금", 15, 1, "웹 프레임 워크");
+    drawSubject("금", 16.5, 1, "알고리즘");
   }, []);
 
   return <canvas ref={canvasRef} />;

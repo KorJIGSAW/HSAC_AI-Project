@@ -13,7 +13,7 @@ export const mockData = [
     info: {
       type: 'A',
       lectureType: '전선',
-      credits: '3학점',
+      credits: '3학년',
       timePeriod: '주간',
       professor: '권민서',
     },
@@ -33,7 +33,7 @@ export const mockData = [
     info: {
       type: 'B',
       lectureType: '전필',
-      credits: '4학점',
+      credits: '4학년',
       timePeriod: '야간',
       professor: '김수한',
     },
@@ -53,7 +53,7 @@ export const mockData = [
     info: {
       type: 'B',
       lectureType: '전필',
-      credits: '4학점',
+      credits: '4학년',
       timePeriod: '야간',
       professor: '김수한',
     },
@@ -73,7 +73,7 @@ export const mockData = [
     info: {
       type: 'B',
       lectureType: '전필',
-      credits: '4학점',
+      credits: '4학년',
       timePeriod: '야간',
       professor: '김수한',
     },
@@ -93,7 +93,7 @@ export const mockData = [
     info: {
       type: 'B',
       lectureType: '전필',
-      credits: '4학점',
+      credits: '4학년',
       timePeriod: '야간',
       professor: '김수한',
     },
@@ -113,7 +113,7 @@ export const mockData = [
     info: {
       type: 'B',
       lectureType: '전필',
-      credits: '4학점',
+      credits: '4학년',
       timePeriod: '야간',
       professor: '권민서',
     },
@@ -133,7 +133,7 @@ export const mockData = [
     info: {
       type: 'B',
       lectureType: '전필',
-      credits: '4학점',
+      credits: '4학년',
       timePeriod: '야간',
       professor: '김수한',
     },
