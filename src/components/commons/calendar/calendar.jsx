@@ -74,6 +74,7 @@ function CalendarTable() {
     drawSubject("수", 14, 1.5, "네트워크");
     drawSubject("목", 12, 1, "데이터베이스");
     drawSubject("금", 13, 1.5, "운영체제");
+    drawSubject("수", 9, 3, "황기태");
 
   }, []);
 
