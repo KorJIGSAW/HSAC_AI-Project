@@ -87,18 +87,12 @@ function CalendarTable() {
     }
 
     // 과목 정보를 기반으로 과목 그리기
-<<<<<<< HEAD
     drawSubject("월", 9, 1.5, "데이터베이스");
     drawSubject("화", 10, 1, "운영체제");
     drawSubject("수", 14, 1.5, "네트워크");
     drawSubject("목", 12, 1, "데이터베이스");
     drawSubject("금", 13, 1.5, "운영체제");
     drawSubject("수", 9, 3, "황기태");
-=======
-    // 월요일
-    drawSubject("월", 9, 1.5, "데이터 베이스");
-    drawSubject("월", 11, 1, "자료구조");
->>>>>>> b14f41d9d67af2f86570d5fe8fe5d1111632431b
 
     // 화요일
     drawSubject("화", 10, 1, "운영체제");
