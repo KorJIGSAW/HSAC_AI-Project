@@ -2,20 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Right = () => {
+const RightPanel = ({ isButtonDisabled, courseCount }) => {
   return (
-    <MainRightPage>
-      <Link to="https://www.naver.com/">
-        <button>수강신청 Go</button>
+    <RightPanelContainer>
+      <Link to={`/TransPage?courseCount=${courseCount}`}>
+        <button disabled={isButtonDisabled}>수강신청 Go</button>
       </Link>
-    </MainRightPage>
+    </RightPanelContainer>
   );
 };
 
-const MainRightPage = styled.section`
+const RightPanelContainer = styled.section`
   flex: 1;
-  /* width: 50%; */
-  /* min-height: 100vh; */
 `;
 
-export default Right;
+export default RightPanel;

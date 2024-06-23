@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Right from './Right';
-import Left from './Left';
+import RightPanel from './Right';
+import LeftPanel from './Left';
 import Header from './Header';
 
 const Main = () => {
+  const [courseCount, setCourseCount] = useState('');
+
   return (
     <MainPage>
       <Header />
-      <Right />
-      <Left />
+      <LeftPanel setCourseCount={setCourseCount} />
+      <RightPanel isButtonDisabled={!courseCount} courseCount={courseCount} />
     </MainPage>
   );
 };
